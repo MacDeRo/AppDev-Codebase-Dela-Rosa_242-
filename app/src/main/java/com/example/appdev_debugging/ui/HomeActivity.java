@@ -48,11 +48,15 @@ public class HomeActivity extends AppCompatActivity{
         //  Your tasks:
         //    a) Explain why the bug only appears when "Remember me" was ticked AND the app is restarted.
         //       (Think: where does the session live in each case: memory or disk?)
+        //       --checking remember me creates a persistent session within the phone's data files in sharedpreferences, which does not log it out
         //    b) Use Android Studio's Device Explorer to open
         //       /data/data/com.example.simplelogin/shared_prefs/ and inspect the XML file there
         //       before login, after login, and after logout. What do you see?
+        //       --before login the xml file contains no strings of saved accounts, after login and logout it has the saved accounts on disk therefore meaning the entry is not removed from session
         //    c) Find and fix the root cause. Do NOT fix it by adding extra code here in HomeActivity;
         //       fix the class that is actually responsible for the session.
+        //       --sessionmanager logout is the issue, it does not removed the account from sharedprefences when logout
+        //       --fixed by adding line that removes current and persistent session from sharedpreferences which prevents auto login and inability to log out when remember me is checked
         btnLogout.setOnClickListener(v -> {
             sessionManager.logout();
             goToLogin();

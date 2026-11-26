@@ -65,11 +65,14 @@ public class RegisterActivity extends AppCompatActivity{
     //    2. "juan@school.com" is accepted. "juan@up.edu.ph" is also rejected.
     //  Your tasks:
     //    a) Find where an email is decided to be "valid" (follow authManager.register(...) below).
+    //       --email decided at validator package
     //    b) Run the existing unit tests: right-click app/src/test/java -> Run 'Tests in ...'.
     //       Read the failing test's name and message. Which test fails, and what does it tell you?
+    //       --standard 3 letter email domain works, but anything other than 3 does not work, which tells that adjustments need to be made on validator
     //    c) Test your guess quickly in an online regex tester or a tiny JUnit test before fixing.
+    //      --.com is accepted, but nothing else
     //    d) Fix it, re-run the tests until they pass, and explain what part of the rule was wrong.
-    //
+    //      --regex logic is wrong in a way that it does not accept other valid forms of email domain it was tied strictly to 3 letter domain
     // TODO(DEBUG #4): Weak passwords are being accepted.
     //  The helper text promises "At least 8 characters, with letters and numbers".
     //  Steps to reproduce:
@@ -81,6 +84,8 @@ public class RegisterActivity extends AppCompatActivity{
     //    b) Make a truth table for hasLetter / hasDigit (4 rows). For each row, write what the
     //       rule SHOULD return and what the code ACTUALLY returns.
     //    c) Fix the condition. Confirm with the unit tests (one of them should be failing right now).
+    //    --tests runs successfully even if by rules those are recognized as invalid inputs
+    //    --change parameters from 'or' to 'and' which fixed password input from only accepting either to now both
     private void attemptRegister() {
         clearErrors();
 

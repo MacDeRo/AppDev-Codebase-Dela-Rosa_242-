@@ -26,9 +26,9 @@ public class AuthManager {
         if (passwordError != null) return AuthResult.failure(AuthResult.Field.PASSWORD, passwordError);
 
         User user = repository.findByEmail(email);
-        if (user == null || !PasswordHasher.verify(password.toLowerCase(Locale.ROOT), user.getSalt(), user.getPasswordHash())) {
+        if (user == null || !PasswordHasher.verify(password, user.getSalt(), user.getPasswordHash())) {
             return AuthResult.failure(AuthResult.Field.GENERAL, INVALID_CREDENTIALS);
-        }
+        } //removed lowercase function
         return AuthResult.success(user);
     }
 
@@ -65,6 +65,8 @@ public class AuthManager {
     public User getUser(String email) {
         return repository.findByEmail(email);
     }
+
+
 }
 
 

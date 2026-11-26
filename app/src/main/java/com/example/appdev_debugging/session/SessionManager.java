@@ -36,5 +36,6 @@ public class SessionManager {
 
     public void logout() {
         currentEmail = null;
+        prefs.edit().remove(KEY_EMAIL).apply();
     }
 }

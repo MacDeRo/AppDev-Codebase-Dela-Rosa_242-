@@ -1,3 +1,31 @@
 <resources>
-    <string name="app_name">AppDev_Debugging</string>
+    <string name="app_name">AppDev Debugging</string>
+
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+
+    <string name="remember_me">Remember me</string>
+
+    <string name="action_login">Log In</string>
+    <string name="action_logout">Log Out</string>
+    <string name="action_register">Register</string>
+
+    <string name="go_to_register">Create an account</string>
+    <string name="go_to_login">Already have an account? Log in</string>
+
+    <string name="home_welcome">Welcome, %1$s!</string>
+    <string name="home_email">Email: %1$s</string>
+
+    <string name="demo_hint">Demo account available</string>
+    <string name="welcome_toast">Welcome back!</string>
+    <string name="register_success">Registration successful</string>
+
+    <string name="password_rules">
+        Password must be at least 8 characters and contain a number.
+    </string>
 </resources>

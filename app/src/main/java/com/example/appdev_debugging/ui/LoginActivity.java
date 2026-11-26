@@ -98,11 +98,11 @@ public class LoginActivity extends AppCompatActivity{
     //  Then register a NEW account whose password is all lowercase letters + digits (e.g. "abc12345")
     //  and log in with it. Does it work? Now try a new account with a capital letter in the password.
     //  Your tasks:
-    //    a) Write down the pattern you observe (which passwords work and which don't?).
+    //    a) Write down the pattern you observe (which passwords work and which don't?). --Capital letters
     //    b) Set a breakpoint on the authManager.login(...) line below, run in Debug mode, and use
     //       "Step Into" (F7) to follow the password all the way to where it is checked.
     //       Watch the value of the password variable at each step in the Variables panel.
-    //    c) Identify the exact line that breaks it, fix it, and explain WHY it broke.
+    //    c) Identify the exact line that breaks it, fix it, and explain WHY it broke. --lowercase syntax in user class forces every input to lower removed it
     //
     // TODO(DEBUG #2): Users with capital letters in their email can't log in after registering.
     //  Steps to reproduce (fix DEBUG #1 first so logins can succeed at all):
@@ -112,12 +112,12 @@ public class LoginActivity extends AppCompatActivity{
     //    3. Bonus symptom: go back to Register and register "Juan.DelaCruz@Mail.com" AGAIN.
     //       It should say the account already exists, but it is accepted.
     //  Your tasks:
-    //    a) Compare with the same steps using an all-lowercase email. What's different?
+    //    a) Compare with the same steps using an all-lowercase email. What's different? --lowercases works and logs in
     //    b) Use breakpoints (or Log.d(...) + Logcat) to inspect how an email is SAVED versus how
-    //       it is LOOKED UP. Print the exact strings being compared.
+    //       it is LOOKED UP. Print the exact strings being compared. --java is case sensitive uppercase emails equals lowercases ones
     //    c) Hint for investigation only: a HashMap compares keys with equals(), and "A".equals("a") is false.
     //    d) Fix it so email matching is case-insensitive everywhere, and add a unit test in
-    //       AuthManagerTest that would have caught this bug.
+    //       AuthManagerTest that would have caught this bug. --adding a normalize within user email converts to lowercase making those emails loggable and functioning
     private void attemptLogin() {
         clearErrors();
 
